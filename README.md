@@ -2,7 +2,7 @@
 
 Ceci est un projet de réservation de salle de co-working.
 
-## Pour démarrer
+## Pour démarrer le projet
 
 Pour travailler sur le projet, on clone le dépôt Github :
 
@@ -29,3 +29,10 @@ Pour lancer le projet :
 ```bash
 php artisan serve
 ```
+
+## Pour contribuer sur le projet :
+
+Toute contribution sur le projet doit se faire via une **User Story** à définir dans le [trello]
+(https://trello.com/b/nbadFlgF/air-office).
+
+La colonne **To Do** représente le sprint actuel. C'est dans cette colonne qu'on va se servir au niveau des tâches à réalisées.
