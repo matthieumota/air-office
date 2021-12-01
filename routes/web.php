@@ -20,7 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/connexion', function () {
-    Auth::loginUsingId(1);
+    Auth::loginUsingId(request('u'));
+
     return redirect('/bureaux');
 })->name('login');
 
