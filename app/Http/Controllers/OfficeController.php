@@ -14,4 +14,23 @@ class OfficeController extends Controller
             'offices' => Office::where('user_id', '!=', Auth::user()->id)->get(),
         ]);
     }
+
+    public function create()
+    {
+        return view('offices.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:3|max:255',
+        ]);
+
+        Office::create([
+            'name' => $request->name,
+            'user_id' => $request->user()->id,
+        ]);
+
+        return redirect('/bureaux');
+    }
 }
