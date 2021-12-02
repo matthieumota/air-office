@@ -4,6 +4,10 @@
 <a href="/bureau/nouveau">Créer une salle</a>
 <ul>
     @foreach ($offices as $office)
-    <li>{{ $office->name }}</li>
+    <li>
+        <a href="/bureau/{{ $office->id }}">
+            {{ $office->name }}
+        </a>
+    </li>
     @endforeach
 </ul>

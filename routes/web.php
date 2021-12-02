@@ -28,3 +28,4 @@ Route::get('/connexion', function () {
 Route::get('/bureaux', [OfficeController::class, 'index'])->middleware('auth');
 Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('auth');
 Route::post('/bureau/nouveau', [OfficeController::class, 'store'])->middleware('auth');
+Route::get('/bureau/{office}', [OfficeController::class, 'show'])->middleware('auth');

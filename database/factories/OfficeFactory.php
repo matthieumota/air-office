@@ -16,6 +16,7 @@ class OfficeFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(),
+            'price' => $this->faker->numberBetween(1, 100),
             'user_id' => User::factory(),
         ];
     }

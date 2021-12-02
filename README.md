@@ -24,6 +24,18 @@ cp .env.example .env
 php artisan key:generate
 ```
 
+Pour créer la BDD :
+
+```bash
+php artisan migrate
+```
+
+Pour remplir la BDD :
+
+```bash
+php artisan db:seed
+```
+
 Pour lancer le projet :
 
 ```bash
