@@ -40,11 +40,8 @@ class OfficeController extends Controller
 
     public function edit(Request $request, Office $office, User $user)
     {
-        abort_if(! auth::user()->id == $office->user_id, 403);
 
-        return view('offices.edit', [
-            'office' => $office
-        ]);
+        abort_if(Auth::user()->id !== $office->user_id, 403);
 
         if ($request->isMethod('post')) {
 
@@ -53,5 +50,9 @@ class OfficeController extends Controller
             ]);
             return redirect('/bureaux');
         }
+
+        return view('offices.edit', [
+            'office' => $office
+        ]);
     }
 }
