@@ -23,7 +23,8 @@ jobs:
       - name: Execute tests
         run: php artisan test
 
-      - name: Deploy
+      - name: Deploy on Staging
+        if: github.ref == 'refs/heads/develop'
         uses: deployphp/action@v1
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
