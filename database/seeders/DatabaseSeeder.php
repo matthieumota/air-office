@@ -24,12 +24,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'fiorella@boxydev.com',
         ]);
 
-        \App\Models\User::factory()->create([
+        $user = \App\Models\User::factory()->create([
             'name' => 'Modérateur',
             'email' => 'moderator@monsite.com',
             'role' => ['moderator']
         ]);
 
-        Office::factory(10)->create();
+        Office::factory(10)->for($user)->create();
     }
 }
