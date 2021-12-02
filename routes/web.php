@@ -31,17 +31,14 @@ Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('
 Route::post('/bureau/nouveau', [OfficeController::class, 'store'])->middleware('auth');
 
 // Moderation
-Route::middleware(['middleware' => 'role:moderator'])->group(function () {
-    
-    Route::prefix('moderation')->group(function () {
-        Route::get('/', [ModerationController::class, 'index']);
-        Route::get('/salles', [ModerationController::class, 'offices']);
+Route::middleware(['middleware' => 'role:moderator'])->prefix('moderation')->group(function () {
+    Route::get('/', [ModerationController::class, 'index']);
+    Route::get('/salles', [ModerationController::class, 'offices']);
 
-        Route::prefix('/salle-{office}')->group(function () {
-            Route::get('/', [ModerationController::class, 'office_view']);
-            Route::get('/delete', [ModerationController::class, 'office_delete']);
-            Route::get('/validate', [ModerationController::class, 'office_validate']);
-        });
+    Route::prefix('/salle-{office}')->group(function () {
+        Route::get('/', [ModerationController::class, 'office_view']);
+        Route::get('/delete', [ModerationController::class, 'office_delete']);
+        Route::get('/validate', [ModerationController::class, 'office_validate']);
     });
 });
 
