@@ -31,8 +31,17 @@ Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('
 Route::post('/bureau/nouveau', [OfficeController::class, 'store'])->middleware('auth');
 
 // Moderation
-Route::get('/moderation', [ModerationController::class, 'index'])->middleware('role:moderator');
-Route::get('/moderation/salles', [ModerationController::class, 'offices'])->middleware('role:moderator');
-Route::get('/moderation/salle-{office}', [ModerationController::class, 'office_view'])->middleware('role:moderator');
-Route::get('/moderation/salle-{office}/delete', [ModerationController::class, 'office_delete'])->middleware('role:moderator');
-Route::get('/moderation/salle-{office}/validate', [ModerationController::class, 'office_validate'])->middleware('role:moderator');
+Route::middleware(['middleware' => 'role:moderator'])->group(function () {
+    
+    Route::prefix('moderation')->group(function () {
+        Route::get('/', [ModerationController::class, 'index']);
+        Route::get('/salles', [ModerationController::class, 'offices']);
+
+        Route::prefix('/salle-{office}')->group(function () {
+            Route::get('/', [ModerationController::class, 'office_view']);
+            Route::get('/delete', [ModerationController::class, 'office_delete']);
+            Route::get('/validate', [ModerationController::class, 'office_validate']);
+        });
+    });
+});
+
