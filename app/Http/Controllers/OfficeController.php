@@ -16,6 +16,13 @@ class OfficeController extends Controller
         ]);
     }
 
+    public function show(Office $office)
+    {
+        return view('offices.show', [
+            'office' => $office,
+        ]);
+    }
+
     public function create()
     {
         return view('offices.create');
@@ -27,10 +34,12 @@ class OfficeController extends Controller
     {
         $request->validate([
             'name' => 'required|min:3|max:255',
+            'price' => 'required|numeric|between:1,500',
         ]);
 
         Office::create([
             'name' => $request->name,
+            'price' => $request->price,
             'user_id' => $request->user()->id,
         ]);
 

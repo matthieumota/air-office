@@ -6,7 +6,11 @@
 <a href="/moderation">Modération</a>
 <ul>
     @foreach ($offices as $office)
-    <li>{{ $office->name }}</li>
-    <a href='/bureau/modifier/{{$office->id}}'>Modifier</a>
+    <li>
+        <a href="/bureau/{{ $office->id }}">
+            {{ $office->name }}
+        </a>
+        <a href='/bureau/modifier/{{$office->id}}'>Modifier</a>
+    </li>
     @endforeach
 </ul>

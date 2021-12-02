@@ -11,5 +11,6 @@
 <form method="post">
     @csrf
     <input type="text" name="name" placeholder="Name">
+    <input type="text" name="price" placeholder="Prix">
     <button>Ajouter</button>
 </form>
