@@ -36,3 +36,17 @@ Toute contribution sur le projet doit se faire via une **User Story** à défini
 (https://trello.com/b/nbadFlgF/air-office).
 
 La colonne **To Do** représente le sprint actuel. C'est dans cette colonne qu'on va se servir au niveau des tâches à réalisées.
+
+## Pour déployer le projet :
+
+On peut déployer la branche develop sur le serveur de pré-production :
+
+```bash
+./vendor/bin/dep deploy stage=staging
+```
+
+Pour déployer sur la production :
+
+```bash
+./vendor/bin/dep deploy stage=prod
+```

@@ -22,3 +22,9 @@ jobs:
 
       - name: Execute tests
         run: php artisan test
+
+      - name: Deploy
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          dep: deploy stage=staging
