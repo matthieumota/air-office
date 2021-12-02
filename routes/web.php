@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OfficeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/connexion', function () {
+    Auth::loginUsingId(request('u', 1));
+
+    return redirect('/bureaux');
+})->name('login');
+
+Route::get('/bureaux', [OfficeController::class, 'index'])->middleware('auth');
+Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('auth');
+Route::post('/bureau/nouveau', [OfficeController::class, 'store'])->middleware('auth');

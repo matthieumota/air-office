@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68c5d50cc9f9d5c9c4e660dbb63257f8",
+    "content-hash": "6b5d61c4c0d467f70550da4a59c641ec",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5450,6 +5450,46 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "deployer/dist",
+            "version": "v7.0.0-rc.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deployphp/distribution.git",
+                "reference": "a4835d64da949be445fc6d0184ad9f294b8a21bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deployphp/distribution/zipball/a4835d64da949be445fc6d0184ad9f294b8a21bf",
+                "reference": "a4835d64da949be445fc6d0184ad9f294b8a21bf",
+                "shasum": ""
+            },
+            "replace": {
+                "deployer/deployer": "self.version"
+            },
+            "bin": [
+                "dep"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Medvedev",
+                    "email": "anton@medv.io"
+                }
+            ],
+            "description": "Deployer Phar Distribution",
+            "homepage": "https://deployer.org",
+            "support": {
+                "docs": "https://deployer.org/docs",
+                "issues": "https://github.com/deployphp/deployer/issues",
+                "source": "https://github.com/deployphp/deployer"
+            },
+            "time": "2021-11-21T22:28:44+00:00"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.4.0",

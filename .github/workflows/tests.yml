@@ -1,0 +1,30 @@
+name: Tests
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - name: Install dependencies
+        run: |
+          composer install --prefer-dist --no-interaction
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Execute tests
+        run: php artisan test
+
+      - name: Deploy
+        uses: deployphp/action@v1
+        with:
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          dep: deploy stage=staging
