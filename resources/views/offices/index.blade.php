@@ -8,6 +8,7 @@
         <a href="/bureau/{{ $office->id }}">
             {{ $office->name }}
         </a>
+        <a href='/bureau/modifier/{{$office->id}}'>Modifier</a>
     </li>
     @endforeach
 </ul>

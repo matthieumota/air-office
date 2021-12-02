@@ -30,5 +30,6 @@ Route::get('/bureaux', [OfficeController::class, 'index'])->middleware('auth');
 Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('auth');
 Route::post('/bureau/nouveau', [OfficeController::class, 'store'])->middleware('auth');
 Route::get('/bureau/{office}', [OfficeController::class, 'show'])->middleware('auth');
-
+Route::any('/bureau/modifier/{office}', [OfficeController::class, 'edit'])->middleware('auth');
+  
 Route::post('/reservation/{office}', [ReservationController::class, 'store'])->middleware('auth');
