@@ -11,6 +11,10 @@
             {{ $office->name }}
         </a>
         <a href='/bureau/modifier/{{$office->id}}'>Modifier</a>
+        <form method="post" action="/bureau/{{$office->id}}">
+            @csrf @method('delete')
+            <button>Supprimer</button>
+        </form>
     </li>
     @endforeach
 </ul>

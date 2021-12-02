@@ -33,6 +33,7 @@ Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('
 Route::post('/bureau/nouveau', [OfficeController::class, 'store'])->middleware('auth');
 Route::get('/bureau/{office}', [OfficeController::class, 'show'])->middleware('auth');
 Route::any('/bureau/modifier/{office}', [OfficeController::class, 'edit'])->middleware('auth');
+Route::delete('/bureau/{office}', [OfficeController::class, 'destroy'])->middleware('auth');
   
 Route::post('/reservation/{office}', [ReservationController::class, 'store'])->middleware('auth');
 

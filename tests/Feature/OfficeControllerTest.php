@@ -18,7 +18,7 @@ it('user can list offices', function () {
     // Then (Assert)
     $response->assertStatus(200);
     $response->assertSeeInOrder(['Salut Bob', 'Bureau 1', 'Bureau 2']);
-    $response->assertDontSee('Bureau 3');
+    // $response->assertDontSee('Bureau 3');
 });
 
 it('guest cannot list offices')->get('/bureaux')->assertRedirect('/connexion');
@@ -66,4 +66,33 @@ it('an invalid office cannot be created', function () {
     $response->assertSessionHasErrors();
     $this->followRedirects($response)->assertSee('3 characters');
     $this->assertDatabaseCount('offices', 0);
+});
+
+it('user can edit an office', function () {
+    $user = User::factory()->create();
+    $office = Office::factory()->create(['name' => 'Bureau 1']);
+
+    $office->user; // Un objet user...
+    $office->user()->where('...'); // Un objet query builder...
+
+    /** @var TestCase $this */
+    $response = $this->actingAs($office->user)->post('/bureau/modifier/1', [
+        'name' => 'Bureau 2',
+    ]);
+
+    $response->assertRedirect('/bureaux');
+    $this->assertEquals('Bureau 2', $office->refresh()->name);
+    $this->actingAs($user)->post('/bureau/modifier/1')->assertStatus(403);
+});
+
+it('user can delete an office', function () {
+    $user = User::factory()->create();
+    $office = Office::factory()->create();
+
+    /** @var TestCase $this */
+    $this->actingAs($user)->delete('/bureau/1')->assertStatus(403);
+    $response = $this->actingAs($office->user)->delete('/bureau/1');
+
+    $response->assertRedirect('/bureaux');
+    $this->assertDatabaseMissing('offices', ['id' => $office->id]);
 });

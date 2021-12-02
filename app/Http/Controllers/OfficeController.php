@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Office;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +11,7 @@ class OfficeController extends Controller
     public function index()
     {
         return view('offices.index', [
-            'offices' => Office::where('user_id', '!=', Auth::user()->id)->get(),
+            'offices' => Office::where('user_id', '!=', /*Auth::user()->id*/0)->get(),
         ]);
     }
 
@@ -47,21 +46,29 @@ class OfficeController extends Controller
     }
 
 
-    public function edit(Request $request, Office $office, User $user)
+    public function edit(Request $request, Office $office)
     {
-
-        abort_if(Auth::user()->id !== $office->user_id, 403);
+        abort_if(Auth::user()->id !== (int) $office->user_id, 403);
 
         if ($request->isMethod('post')) {
-
             $office->update([
                 'name' => $request->name
             ]);
+
             return redirect('/bureaux');
         }
 
         return view('offices.edit', [
             'office' => $office
         ]);
+    }
+
+    public function destroy(Office $office)
+    {
+        abort_if(Auth::user()->id !== (int) $office->user_id, 403);
+
+        $office->delete();
+
+        return redirect('/bureaux');
     }
 }
