@@ -24,7 +24,7 @@ class CreateReservationsTable extends Migration
         });
 
         Schema::table('offices', function (Blueprint $table) {
-            $table->integer('price');
+            $table->integer('price')->default('');
         });
     }
 
