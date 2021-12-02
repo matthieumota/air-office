@@ -7,5 +7,6 @@
 <ul>
     @foreach ($offices as $office)
     <li>{{ $office->name }}</li>
+    <a href='/bureau/modifier/{{$office->id}}'>Modifier</a>
     @endforeach
 </ul>
