@@ -23,7 +23,9 @@ host('staging-68f8a8b6.nip.io')
 // Tasks
 task('build', function () {
     // cd('{{release_path}}');
-    // run('npm run build');
+    // run('npm install');
+    // run('npm run prod');
 });
 
+// after('artisan:migrate', 'build');
 after('deploy:failed', 'deploy:unlock');
