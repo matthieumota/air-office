@@ -19,6 +19,7 @@ jobs:
           composer install --prefer-dist --no-interaction
           cp .env.example .env
           php artisan key:generate
+          npm install && npm run prod
 
       - name: Execute tests
         run: php artisan test
