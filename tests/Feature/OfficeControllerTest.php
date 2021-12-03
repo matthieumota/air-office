@@ -17,7 +17,7 @@ it('user can list offices', function () {
 
     // Then (Assert)
     $response->assertStatus(200);
-    $response->assertSeeInOrder(['Salut Bob', 'Bureau 1', 'Bureau 2']);
+    $response->assertSeeInOrder(['Bienvenue Bob', 'Bureau 1', 'Bureau 2']);
     // $response->assertDontSee('Bureau 3');
 });
 
