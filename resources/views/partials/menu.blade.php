@@ -9,7 +9,7 @@
                         <x-link href="/bureaux">Bureaux</x-link>
                     </li>
                     <li>
-                        <x-link href="#">Modération</x-link>
+                        <x-link href="/moderation">Modération</x-link>
                     </li>
                 </ul>
             </nav>
