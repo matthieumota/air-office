@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModerationController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\ReservationController;
@@ -26,6 +27,9 @@ Route::get('/connexion', function () {
 
     return redirect('/bureaux');
 })->name('login');
+
+Route::post('/connexion', [LoginController::class, 'store'])->middleware('guest');
+Route::delete('/deconnexion', [LoginController::class, 'destroy'])->middleware('auth');
 
 // Bureaux
 Route::get('/bureaux', [OfficeController::class, 'index'])->middleware('auth');
