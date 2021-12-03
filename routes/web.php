@@ -35,6 +35,7 @@ Route::get('/bureau/{office}', [OfficeController::class, 'show'])->middleware('a
 Route::any('/bureau/modifier/{office}', [OfficeController::class, 'edit'])->middleware('auth');
 Route::delete('/bureau/{office}', [OfficeController::class, 'destroy'])->middleware('auth');
   
+Route::get('/reservations', [ReservationController::class, 'index'])->middleware('auth');
 Route::post('/reservation/{office}', [ReservationController::class, 'store'])->middleware('auth');
 
 // Moderation
