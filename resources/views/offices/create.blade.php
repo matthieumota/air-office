@@ -20,7 +20,9 @@
                 <input type="text" name="price" placeholder="Prix">
             </div>
             <div class="mb-4">
-                <input type="file" name="image">
+                <input type="file" name="images[]">
+                <input type="file" name="images[]">
+                <input type="file" name="images[]">
             </div>
             <button class="py-2 px-4 rounded-md bg-blue-500 text-white">Ajouter</button>
         </form>
