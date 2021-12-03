@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModerationController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\RegisterController;
@@ -27,6 +28,9 @@ Route::get('/connexion', function () {
 
     return redirect('/bureaux');
 })->name('login');
+
+Route::post('/connexion', [LoginController::class, 'store'])->middleware('guest');
+Route::delete('/deconnexion', [LoginController::class, 'destroy'])->middleware('auth');
 
 Route::get('/register', function () {
     return view('register');
