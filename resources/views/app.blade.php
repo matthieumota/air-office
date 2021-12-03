@@ -8,7 +8,9 @@
 
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 </head>
-<body>
+<body class="bg-gray-300 antialiased">
+    @include('partials.menu')
+
     @yield('body')
 </body>
 </html>
