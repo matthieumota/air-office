@@ -28,12 +28,6 @@ Route::get('/connexion', function () {
     return redirect('/bureaux');
 })->name('login');
 
-Route::get('/register', function () {
-    return view('register');
-});
-
-Route::post('/register', [RegisterController::class, 'register']);
-
 // Bureaux
 Route::get('/bureaux', [OfficeController::class, 'index'])->middleware('auth');
 Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('auth');
@@ -56,3 +50,6 @@ Route::middleware(['middleware' => 'role:moderator'])->prefix('moderation')->gro
         Route::get('/validate', [ModerationController::class, 'office_validate']);
     });
 });
+
+Route::get('/register', [RegisterController::class, 'register_view']);
+Route::post('/register', [RegisterController::class, '']);

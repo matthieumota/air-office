@@ -11,6 +11,13 @@
                     <li>
                         <x-link href="/moderation">Modération</x-link>
                     </li>
+                    <li>
+                        <x-link href="/register">S'inscrire</x-link>
+                    </li>
+                    <li>
+                        <x-link href="/login">Se Connecter</x-link>
+                    </li>
+
                 </ul>
             </nav>
         </div>
