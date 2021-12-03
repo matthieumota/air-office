@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ModerationController;
 use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,12 @@ Route::get('/connexion', function () {
     return redirect('/bureaux');
 })->name('login');
 
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::post('/register', [RegisterController::class, 'register']);
+
 // Bureaux
 Route::get('/bureaux', [OfficeController::class, 'index'])->middleware('auth');
 Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('auth');
@@ -34,7 +41,7 @@ Route::post('/bureau/nouveau', [OfficeController::class, 'store'])->middleware('
 Route::get('/bureau/{office}', [OfficeController::class, 'show'])->middleware('auth');
 Route::any('/bureau/modifier/{office}', [OfficeController::class, 'edit'])->middleware('auth');
 Route::delete('/bureau/{office}', [OfficeController::class, 'destroy'])->middleware('auth');
-  
+
 Route::get('/reservations', [ReservationController::class, 'index'])->middleware('auth');
 Route::post('/reservation/{office}', [ReservationController::class, 'store'])->middleware('auth');
 
