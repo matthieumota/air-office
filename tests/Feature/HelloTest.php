@@ -2,4 +2,4 @@
 
 it('user can view homepage')
     ->get('/')
-    ->assertSee('Laravel');
+    ->assertSee('Air Office');
