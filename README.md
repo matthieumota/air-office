@@ -42,6 +42,12 @@ Pour lancer le projet :
 php artisan serve
 ```
 
+Pour travailler sur le front :
+
+```bash
+npm run watch
+```
+
 ## Pour contribuer sur le projet :
 
 Toute contribution sur le projet doit se faire via une **User Story** à définir dans le [trello]
