@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Office;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 
 class ReservationController extends Controller
 {
+    public function index()
+    {
+        return view('reservations.index', [
+            'reservations' => Auth::user()->reservations,
+        ]);
+    } 
+
     public function store(Request $request, Office $office)
     {
         $request->validate([

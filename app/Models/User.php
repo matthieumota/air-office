@@ -44,7 +44,6 @@ class User extends Authenticatable
         'role' => 'array'
     ];
 
-
     public function hasRole(string $role): bool
     {
         if (!is_null($this->role)) {
@@ -52,5 +51,10 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
     }
 }
