@@ -2,17 +2,17 @@
 @section('body')
 
 
-<div class="flex space-x-10 my-4 justify-end mr-10 flex-wrap ">
-    <a href="/connexion?u=1" class="text-1xl bg-yellow-200 hover:bg-yellow-400 text-white font-bold py-1 px-2 rounded">Matthieu</a>
-    <a href="/connexion?u=2" class="text-1xl bg-yellow-200 hover:bg-yellow-400 text-white font-bold py-1 px-2 rounded">Fiorella</a>
-    <a href="/connexion?u=3" class="text-1xl bg-yellow-200 hover:bg-yellow-400 text-white font-bold py-1 px-2 rounded">Modérateur</a>
+<div class="flex space-x-10 my-4 justify-end mr-10 flex-wrap">
+    <a href="/connexion?u=1" class="mb-2 text-1xl bg-yellow-200 hover:bg-yellow-400 text-white font-bold py-1 px-2 rounded">Matthieu</a>
+    <a href="/connexion?u=2" class="mb-2 text-1xl bg-yellow-200 hover:bg-yellow-400 text-white font-bold py-1 px-2 rounded">Fiorella</a>
+    <a href="/connexion?u=3" class="mb-2 text-1xl bg-yellow-200 hover:bg-yellow-400 text-white font-bold py-1 px-2 rounded">Modérateur</a>
     <h1 class="text-1xl py-1">Bienvenue {{ Auth::user()->name }}</h1>
 </div>
 <div class="flex flex-col justify-items-center space-y-10">
-<h1 class="m-auto text-5xl w-6/12 text-center">Nos salles</h1>
-<a href="/bureau/nouveau" class="m-auto text-center hover:bg-gray-400 hover:text-white text-2xl w-6/12 bg-white rounded-xl p-4">Créer une salle</a>
+    <h1 class="m-auto text-5xl xl:w-6/12 text-center">Nos salles</h1>
+    <a href="/bureau/nouveau" class="m-auto text-center hover:bg-gray-400 hover:text-white text-2xl w-6/12 bg-white rounded-xl p-4">Créer une salle</a>
 </div>
-<div class="m-auto p-10 w-7/12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1  xl:grid-cols-3  gap-5">
+<div class="m-auto p-10 xl:w-7/12 md:w-7/12 sm:w-11/12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1  xl:grid-cols-3  gap-5">
     @foreach ($offices as $office)
     <div class="bg-white rounded-xl p-4 shadow-xl mt-4 ">
 
