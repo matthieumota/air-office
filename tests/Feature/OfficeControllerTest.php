@@ -68,6 +68,14 @@ it('an invalid office cannot be created', function () {
     $this->assertDatabaseCount('offices', 0);
 });
 
+it('user can display a form to edit an office', function () {
+    $office = Office::factory()->create();
+
+    $this->actingAs($office->user)->get('/bureau/modifier/1')
+        ->assertStatus(200)
+        ->assertSee('Modifier');
+});
+
 it('user can edit an office', function () {
     $user = User::factory()->create();
     $office = Office::factory()->create(['name' => 'Bureau 1']);
