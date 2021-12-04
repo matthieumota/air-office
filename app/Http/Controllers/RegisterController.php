@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+
+    public function register_view()
+    {
+        return view('connexion.register');
+    }
+
     public function register(Request $request)
     {
         $request->validate([

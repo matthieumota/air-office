@@ -32,10 +32,7 @@ Route::get('/connexion', function () {
 Route::post('/connexion', [LoginController::class, 'store'])->middleware('guest');
 Route::delete('/deconnexion', [LoginController::class, 'destroy'])->middleware('auth');
 
-Route::get('/register', function () {
-    return view('register');
-});
-
+Route::get('/register', [RegisterController::class, 'register_view']);
 Route::post('/register', [RegisterController::class, 'register']);
 
 // Bureaux
