@@ -27,20 +27,26 @@ class OfficeController extends Controller
         return view('offices.create');
     }
 
-
-
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|min:3|max:255',
             'price' => 'required|numeric|between:1,500',
+            'images' => 'array',
+            'images.*' => 'required|image|max:2048',
         ]);
 
-        Office::create([
+        $office = Office::create([
             'name' => $request->name,
             'price' => $request->price,
             'user_id' => $request->user()->id,
         ]);
+
+        foreach ($request->images ?? [] as $image) {
+            $office->images()->create([
+                'path' => $image->store('offices', 'public'),
+            ]);
+        }
 
         return redirect('/bureaux');
     }
