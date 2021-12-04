@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModerationController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\RegisterController;
@@ -28,6 +29,12 @@ Route::get('/connexion', function () {
     return redirect('/bureaux');
 })->name('login');
 
+Route::post('/connexion', [LoginController::class, 'store'])->middleware('guest');
+Route::delete('/deconnexion', [LoginController::class, 'destroy'])->middleware('auth');
+
+Route::get('/register', [RegisterController::class, 'register_view']);
+Route::post('/register', [RegisterController::class, 'register']);
+
 // Bureaux
 Route::get('/bureaux', [OfficeController::class, 'index'])->middleware('auth');
 Route::get('/bureau/nouveau', [OfficeController::class, 'create'])->middleware('auth');
@@ -50,6 +57,3 @@ Route::middleware(['middleware' => 'role:moderator'])->prefix('moderation')->gro
         Route::get('/validate', [ModerationController::class, 'office_validate']);
     });
 });
-
-Route::get('/register', [RegisterController::class, 'register_view']);
-Route::post('/register', [RegisterController::class, '']);

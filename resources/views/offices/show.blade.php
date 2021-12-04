@@ -4,15 +4,18 @@
 <div class="max-w-4xl mx-auto px-4">
     <h1 class="text-3xl py-3 my-4">{{ $office->name }}</h1>
 
+    @if ($office->images->isNotEmpty())
     <div class="md:flex">
         <div class="md:w-2/3 mb-2 md:mb-0 md:mr-2">
-            <img class="h-full" src="https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F11.2F20.2Ff940f670-fc2e-497e-afce-919048436b67.2Ejpeg/850x478/quality/90/crop-from/center/focus-point/593%2C405/les-8-cles-d-un-chaton-en-pleine-sante.jpeg">
+            <img class="h-full" src="{{ asset('storage/'.$office->images->first()->path) }}">
         </div>
         <div class="md:w-1/3">
-            <img class="mb-2" src="https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F11.2F20.2Ff940f670-fc2e-497e-afce-919048436b67.2Ejpeg/850x478/quality/90/crop-from/center/focus-point/593%2C405/les-8-cles-d-un-chaton-en-pleine-sante.jpeg">
-            <img src="https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F11.2F20.2Ff940f670-fc2e-497e-afce-919048436b67.2Ejpeg/850x478/quality/90/crop-from/center/focus-point/593%2C405/les-8-cles-d-un-chaton-en-pleine-sante.jpeg">
+            @foreach ($office->images->slice(1) as $image)
+            <img class="mb-2" src="{{ asset('storage/'.$image->path) }}">
+            @endforeach
         </div>
     </div>
+    @endif
 
     <div class="mt-8 bg-white p-4 rounded-lg shadow">
         <div class="flex justify-between items-center">

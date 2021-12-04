@@ -21,4 +21,9 @@ class Office extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }
