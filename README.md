@@ -1,6 +1,6 @@
 # Air Office
 
-Ceci est un projet de réservation de salle de co-working.
+Ceci est un projet de réservation de salle de co-working avec Laravel.
 
 ## Pour démarrer le projet
 
